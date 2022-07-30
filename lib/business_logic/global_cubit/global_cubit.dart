@@ -21,12 +21,9 @@ class GlobalCubit extends Cubit<GlobalState> {
       'apiToken': 'aJggGRLcY35Gj1GCxz2aP1FiSgWhzvjZhtPGdqF0WtI40tulXJ3fmr3yfdUllQm2es6Uz'
     },
      ).then((value) {
-      print('done');
       tableResponse = TableResponse.fromJson(value.data);
       emit(GlobalSuccessState());
-      print(tableResponse!.exams![3].grade!.name);
-      //print(value.data.toString());
-     }).catchError((error){
+           }).catchError((error){
       emit(GlobalErrorState());
       print(error.toString());
      });

@@ -16,589 +16,402 @@ class HomeScreen extends StatelessWidget {
         // TODO: implement listener
       },
       builder: (context, state) {
-        return GlobalCubit.get(context).tableResponse != null ?
-        tableBuilder(GlobalCubit.get(context).tableResponse!,context)
-        : Container(
-          height: double.infinity,
-          width: double.infinity,
-          color: AppColor.white,
-          child: Center(child: CircularProgressIndicator()));
+        return GlobalCubit.get(context).tableResponse != null
+            ? tableBuilder(GlobalCubit.get(context).tableResponse!, context)
+            : Scaffold(
+                appBar: AppBar(
+                  title: Text(
+                    'جدول الاختبرات',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.black),
+                  ),
+                  backgroundColor: AppColor.transparent,
+                  toolbarHeight: 10.h,
+                  flexibleSpace: Container(
+                    decoration: BoxDecoration(
+                        color: AppColor.blue,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(25),
+                        )),
+                  ),
+                  actions: [
+                    IconButton(
+                        onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))
+                  ],
+                ),
+                body: Container(
+                    height: double.infinity,
+                    width: double.infinity,
+                    color: AppColor.white,
+                    child: Center(child: CircularProgressIndicator())),
+              );
       },
     );
   }
 
-  Widget tableBuilder(TableResponse tableResponse , context) => Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'جدول الاختبرات',
-              style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: AppColor.black),
-            ),
-            backgroundColor: AppColor.transparent,
-            toolbarHeight: 10.h,
-            flexibleSpace: Container(
-              decoration: BoxDecoration(
-                  color: AppColor.blue,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(25),
-                  )),
-            ),
-            actions: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))
-            ],
+  Widget tableBuilder(TableResponse tableResponse, context) => Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'جدول الاختبرات',
+            style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: AppColor.black),
           ),
-          body: Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Container(
-              height: double.infinity,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                Container(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 220),
-                                        child: Container(
-                                          width: 75.w,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              ContainerWidget(
-                                                height: 10,
-                                                width: 23,
-                                                color: AppColor.yellow,
-                                                borderRadius: 10,
-                                                cText: tableResponse.exams![3].grade!.name,
-                                                Chorizontal: 10,
-                                                Cvertical: 23,
-                                              ),
-                                              ContainerWidget(
-                                                height: 10,
-                                                width: 23,
-                                                color: AppColor.yellow,
-                                                borderRadius: 10,
-                                                cText: tableResponse.exams![2].grade!.name,
-                                                Chorizontal: 10,
-                                                Cvertical: 23,
-                                              ),
-                                              ContainerWidget(
-                                                height: 10,
-                                                width: 23,
-                                                color: AppColor.yellow,
-                                                borderRadius: 10,
-                                                cText: tableResponse.exams![0].grade!.name,
-                                                Chorizontal: 12,
-                                                Cvertical: 23,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 2.h,
-                                      ),
-                                      Container(
-                                        width: 131.w,
+          backgroundColor: AppColor.transparent,
+          toolbarHeight: 10.h,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                color: AppColor.blue,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(25),
+                )),
+          ),
+          actions: [
+            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Container(
+            height: double.infinity,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              Container(
+                                //color: AppColor.black,
+                                height: 90.h,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 220),
+                                      child: Container(
+                                        width: 75.w,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             ContainerWidget(
-                                              height: 9,
-                                              width: 75,
-                                              color: AppColor.blue,
+                                              height: 10,
+                                              width: 23,
+                                              color: AppColor.yellow,
                                               borderRadius: 10,
-                                              cText: 'المده',
+                                              cText: tableResponse
+                                                  .exams![3].grade!.name,
                                               Chorizontal: 10,
-                                              Cvertical: 20,
+                                              Cvertical: 16,
                                             ),
                                             ContainerWidget(
-                                              height: 9,
-                                              width: 20,
-                                              color: AppColor.blue,
+                                              height: 10,
+                                              width: 23,
+                                              color: AppColor.yellow,
                                               borderRadius: 10,
-                                              cText: 'نوع الاختبار',
-                                              Chorizontal: 20,
-                                              Cvertical: 10,
+                                              cText: tableResponse
+                                                  .exams![2].grade!.name,
+                                              Chorizontal: 10,
+                                              Cvertical: 16,
                                             ),
                                             ContainerWidget(
-                                              height: 9,
-                                              width: 27,
-                                              color: AppColor.blue,
+                                              height: 10,
+                                              width: 23,
+                                              color: AppColor.yellow,
                                               borderRadius: 10,
-                                              cText: 'التوقيت',
-                                              Chorizontal: 30,
-                                              Cvertical: 20,
+                                              cText: tableResponse
+                                                  .exams![0].grade!.name,
+                                              Chorizontal: 5,
+                                              Cvertical: 16,
                                             ),
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: 2.h,
+                                    ),
+                                    SizedBox(
+                                      height: 2.h,
+                                    ),
+                                    Container(
+                                      width: 131.w,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          ContainerWidget(
+                                            height: 9,
+                                            width: 75,
+                                            color: AppColor.blue,
+                                            borderRadius: 10,
+                                            cText: 'المده',
+                                            Chorizontal: 10,
+                                            Cvertical: 20,
+                                          ),
+                                          ContainerWidget(
+                                            height: 9,
+                                            width: 20,
+                                            color: AppColor.blue,
+                                            borderRadius: 10,
+                                            cText: 'نوع الاختبار',
+                                            Chorizontal: 20,
+                                            Cvertical: 10,
+                                          ),
+                                          ContainerWidget(
+                                            height: 9,
+                                            width: 27,
+                                            color: AppColor.blue,
+                                            borderRadius: 10,
+                                            cText: 'التوقيت',
+                                            Chorizontal: 30,
+                                            Cvertical: 20,
+                                          ),
+                                        ],
                                       ),
-                                      Container(
-                                        width: 28.w,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            ContainerWidget(
-                                              height: 5,
-                                              width: 12,
-                                              color: AppColor.blue,
-                                              borderRadius: 10,
-                                              cText: 'الي',
-                                              Chorizontal: 15,
-                                              Cvertical: 8,
-                                            ),
-                                            ContainerWidget(
-                                              height: 5,
-                                              width: 12,
-                                              color: AppColor.blue,
-                                              borderRadius: 10,
-                                              cText: 'من',
-                                              Chorizontal: 15,
-                                              Cvertical: 8,
-                                            ),
-                                          ],
-                                        ),
+                                    ),
+                                    SizedBox(
+                                      height: 2.h,
+                                    ),
+                                    Container(
+                                      width: 30.w,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          ContainerWidget(
+                                            height: 5,
+                                            width: 13,
+                                            color: AppColor.blue,
+                                            borderRadius: 10,
+                                            cText: 'الي',
+                                            Chorizontal: 15,
+                                            Cvertical: 8,
+                                          ),
+                                          ContainerWidget(
+                                            height: 5,
+                                            width: 13,
+                                            color: AppColor.blue,
+                                            borderRadius: 10,
+                                            cText: 'من',
+                                            Chorizontal: 15,
+                                            Cvertical: 8,
+                                          ),
+                                        ],
                                       ),
-                                      Padding(
+                                    ),
+                                    Container(
+                                      height: 62.h,
+                                      width: 131.w,
+                                      //color: AppColor.white,
+                                      child: Padding(
                                         padding: const EdgeInsets.only(top: 8),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Container(
-                                              width: 132.w,
-                                              child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: [
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 25,
-                                                      color: AppColor.yellow,
-                                                      borderRadius: 10,
-                                                      cText: 'الي',
-                                                      Chorizontal: 15,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 25,
-                                                      color: AppColor.yellow,
-                                                      borderRadius: 10,
-                                                      cText: 'الي',
-                                                      Chorizontal: 15,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              right: 5),
-                                                      child: ContainerWidget(
-                                                        height: 12,
-                                                        width: 25,
-                                                        color: AppColor.yellow,
-                                                        borderRadius: 10,
-                                                        cText: 'الي',
-                                                        Chorizontal: 15,
-                                                        Cvertical: 35,
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              right: 10),
-                                                      child: ContainerWidget(
-                                                        height: 12,
-                                                        width: 20,
-                                                        color: AppColor.blue,
-                                                        borderRadius: 10,
-                                                        cText: 'AM',
-                                                        Chorizontal: 15,
-                                                        Cvertical: 35,
-                                                      ),
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 12,
-                                                      color: AppColor.blue,
-                                                      borderRadius: 10,
-                                                      cText: '11AM',
-                                                      Chorizontal: 2,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 12,
-                                                      color: AppColor.blue,
-                                                      borderRadius: 10,
-                                                      cText: '2PM',
-                                                      Chorizontal: 2,
-                                                      Cvertical: 35,
-                                                    ),
-                                                  ]),
+                                        child: ListView.separated(
+                                          itemBuilder: (context, index) => Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              ContainerWidget(
+                                                height: 12,
+                                                width: 23,
+                                                color: AppColor.yellow,
+                                                borderRadius: 10,
+                                                cText: tableResponse
+                                                    .exams![index]
+                                                    .subject!
+                                                    .name,
+                                                Chorizontal: 15,
+                                                Cvertical: 29,
+                                              ),
+                                              ContainerWidget(
+                                                height: 12,
+                                                width: 23,
+                                                color: AppColor.yellow,
+                                                borderRadius: 10,
+                                                cText: tableResponse
+                                                    .exams![index]
+                                                    .subject!
+                                                    .name,
+                                                Chorizontal: 15,
+                                                Cvertical: 29,
+                                              ),
+                                              ContainerWidget(
+                                                height: 12,
+                                                width: 23,
+                                                color: AppColor.yellow,
+                                                borderRadius: 10,
+                                                cText: tableResponse
+                                                    .exams![index]
+                                                    .subject!
+                                                    .name,
+                                                Chorizontal: 15,
+                                                Cvertical: 29,
+                                              ),
+                                              ContainerWidget(
+                                                height: 12,
+                                                width: 20,
+                                                color: AppColor.blue,
+                                                borderRadius: 10,
+                                                cText: tableResponse
+                                                    .exams![index].periodType,
+                                                Chorizontal: 15,
+                                                Cvertical: 34,
+                                              ),
+                                              ContainerWidget(
+                                                height: 12,
+                                                width: 13,
+                                                color: AppColor.blue,
+                                                borderRadius: 10,
+                                                cText: tableResponse
+                                                    .exams![index].endTime,
+                                                Chorizontal: 7,
+                                                Cvertical: 29,
+                                              ),
+                                              ContainerWidget(
+                                                height: 12,
+                                                width: 13,
+                                                color: AppColor.blue,
+                                                borderRadius: 10,
+                                                cText: tableResponse
+                                                    .exams![index].startTime,
+                                                Chorizontal: 7,
+                                                Cvertical: 29,
+                                              ),
+                                            ],
+                                          ),
+                                          separatorBuilder: (context, index) =>
+                                              Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 10.5),
+                                            child: Container(
+                                              width: 20.w,
+                                              height: 0.3.h,
+                                              color: AppColor.grey,
                                             ),
-                                            SizedBox(
-                                              height: 3.h,
-                                            ),
-                                            Container(
-                                              width: 132.w,
-                                              child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: [
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 25,
-                                                      color: AppColor.yellow,
-                                                      borderRadius: 10,
-                                                      cText: 'الي',
-                                                      Chorizontal: 15,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 25,
-                                                      color: AppColor.yellow,
-                                                      borderRadius: 10,
-                                                      cText: 'الي',
-                                                      Chorizontal: 15,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              right: 5),
-                                                      child: ContainerWidget(
-                                                        height: 12,
-                                                        width: 25,
-                                                        color: AppColor.yellow,
-                                                        borderRadius: 10,
-                                                        cText: 'الي',
-                                                        Chorizontal: 15,
-                                                        Cvertical: 35,
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              right: 10),
-                                                      child: ContainerWidget(
-                                                        height: 12,
-                                                        width: 20,
-                                                        color: AppColor.blue,
-                                                        borderRadius: 10,
-                                                        cText: 'AM',
-                                                        Chorizontal: 15,
-                                                        Cvertical: 35,
-                                                      ),
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 12,
-                                                      color: AppColor.blue,
-                                                      borderRadius: 10,
-                                                      cText: '11AM',
-                                                      Chorizontal: 2,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 12,
-                                                      color: AppColor.blue,
-                                                      borderRadius: 10,
-                                                      cText: '2PM',
-                                                      Chorizontal: 2,
-                                                      Cvertical: 35,
-                                                    ),
-                                                  ]),
-                                            ),
-                                            SizedBox(
-                                              height: 3.h,
-                                            ),
-                                            Container(
-                                              width: 132.w,
-                                              child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: [
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 25,
-                                                      color: AppColor.yellow,
-                                                      borderRadius: 10,
-                                                      cText: 'الي',
-                                                      Chorizontal: 15,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 25,
-                                                      color: AppColor.yellow,
-                                                      borderRadius: 10,
-                                                      cText: 'الي',
-                                                      Chorizontal: 15,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              right: 5),
-                                                      child: ContainerWidget(
-                                                        height: 12,
-                                                        width: 25,
-                                                        color: AppColor.yellow,
-                                                        borderRadius: 10,
-                                                        cText: 'الي',
-                                                        Chorizontal: 15,
-                                                        Cvertical: 35,
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              right: 10),
-                                                      child: ContainerWidget(
-                                                        height: 12,
-                                                        width: 20,
-                                                        color: AppColor.blue,
-                                                        borderRadius: 10,
-                                                        cText: 'AM',
-                                                        Chorizontal: 15,
-                                                        Cvertical: 35,
-                                                      ),
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 12,
-                                                      color: AppColor.blue,
-                                                      borderRadius: 10,
-                                                      cText: '11AM',
-                                                      Chorizontal: 2,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 12,
-                                                      color: AppColor.blue,
-                                                      borderRadius: 10,
-                                                      cText: '1PM',
-                                                      Chorizontal: 2,
-                                                      Cvertical: 35,
-                                                    ),
-                                                  ]),
-                                            ),
-                                            SizedBox(
-                                              height: 3.h,
-                                            ),
-                                            Container(
-                                              width: 132.w,
-                                              child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: [
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 25,
-                                                      color: AppColor.yellow,
-                                                      borderRadius: 10,
-                                                      cText: 'الي',
-                                                      Chorizontal: 15,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 25,
-                                                      color: AppColor.yellow,
-                                                      borderRadius: 10,
-                                                      cText: 'الي',
-                                                      Chorizontal: 15,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              right: 5),
-                                                      child: ContainerWidget(
-                                                        height: 12,
-                                                        width: 25,
-                                                        color: AppColor.yellow,
-                                                        borderRadius: 10,
-                                                        cText: 'الي',
-                                                        Chorizontal: 15,
-                                                        Cvertical: 35,
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              right: 10),
-                                                      child: ContainerWidget(
-                                                        height: 12,
-                                                        width: 20,
-                                                        color: AppColor.blue,
-                                                        borderRadius: 10,
-                                                        cText: 'AM',
-                                                        Chorizontal: 15,
-                                                        Cvertical: 35,
-                                                      ),
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 12,
-                                                      color: AppColor.blue,
-                                                      borderRadius: 10,
-                                                      cText: '11AM',
-                                                      Chorizontal: 2,
-                                                      Cvertical: 35,
-                                                    ),
-                                                    ContainerWidget(
-                                                      height: 12,
-                                                      width: 12,
-                                                      color: AppColor.blue,
-                                                      borderRadius: 10,
-                                                      cText: '1PM',
-                                                      Chorizontal: 2,
-                                                      Cvertical: 35,
-                                                    ),
-                                                  ]),
-                                            ),
-                                          ],
+                                          ),
+                                          itemCount: 4,
                                         ),
-                                      )
-                                    ],
-                                  ),
+                                      ),
+                                    )
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 88),
-                          child: Container(
-                            width: 30.w,
-                            //height: 4.h,
-                            child: Column(
-                              children: [
-                                ContainerWidget(
-                                  height: 9,
-                                  width: 23,
-                                  color: AppColor.blue,
-                                  borderRadius: 10,
-                                  cText: 'اليوم',
-                                  Chorizontal: 30,
-                                  Cvertical: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 88),
+                        child: Container(
+                          width: 30.w,
+                          //height: 4.h,
+                          child: Column(
+                            children: [
+                              ContainerWidget(
+                                height: 9,
+                                width: 23,
+                                color: AppColor.blue,
+                                borderRadius: 10,
+                                cText: 'اليوم',
+                                Chorizontal: 30,
+                                Cvertical: 20,
+                              ),
+                              SizedBox(
+                                height: 8.h,
+                              ),
+                              Container(
+                                height: 27.5.h,
+                                width: 23.w,
+                                decoration: BoxDecoration(
+                                    color: AppColor.blue,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      tableResponse.exams![0].date!,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    )
+                                  ],
                                 ),
-                                SizedBox(
-                                  height: 8.h,
+                              ),
+                              SizedBox(height: 3.h),
+                              Container(
+                                height: 12.h,
+                                width: 23.w,
+                                decoration: BoxDecoration(
+                                    color: AppColor.blue,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      tableResponse.exams![2].date!,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    )
+                                  ],
                                 ),
-                                Container(
-                                  height: 27.3.h,
-                                  width: 23.w,
-                                  decoration: BoxDecoration(
-                                      color: AppColor.blue,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'الخميس',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        '2022-6-5',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                        textAlign: TextAlign.center,
-                                      )
-                                    ],
-                                  ),
+                              ),
+                              SizedBox(height: 3.h),
+                              Container(
+                                height: 12.h,
+                                width: 23.w,
+                                decoration: BoxDecoration(
+                                    color: AppColor.blue,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      tableResponse.exams![3].date!,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    )
+                                  ],
                                 ),
-                                SizedBox(height: 3.h),
-                                Container(
-                                  height: 12.h,
-                                  width: 23.w,
-                                  decoration: BoxDecoration(
-                                      color: AppColor.blue,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'الخميس',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        '2022-6-5',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                        textAlign: TextAlign.center,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(height: 3.h),
-                                Container(
-                                  height: 12.h,
-                                  width: 23.w,
-                                  decoration: BoxDecoration(
-                                      color: AppColor.blue,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'الخميس',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        '2022-6-5',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                        textAlign: TextAlign.center,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
-        );
+        ),
+      );
 }

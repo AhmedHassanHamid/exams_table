@@ -10,29 +10,34 @@ import 'package:student_table_task/data/local/cache_helper.dart';
 import 'package:student_table_task/data/remote/dio_helper.dart';
 import 'package:student_table_task/presentation/router/app_router.dart';
 import 'package:student_table_task/presentation/styles/colors.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 
 //late LocalizationDelegate delegate;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   BlocOverrides.runZoned(
     () async {
       DioHelper.init();
       await CacheHelper.init();
 
-      final locale =
-          CacheHelper.getDataFromSharedPreference(key: 'language') ?? "ar";
-
-      // delegate = await LocalizationDelegate.create(
-      //   fallbackLocale: locale,
-      //   supportedLocales: ['ar', 'en'],
-      // );
-      //await delegate.changeLocale(Locale(locale));
-
-      runApp(MyApp(
-        appRouter: AppRouter(),
-      ));
+      runApp(
+        MyApp(
+          appRouter: AppRouter(),
+              ),
+        
+        // EasyLocalization(
+        //   path: 'aassets/i18n',
+        //   supportedLocales: [
+        //     Locale('en'),
+        //     Locale('ar'),
+        //   ],
+        //   fallbackLocale: Locale('ar'),
+        //   child: 
+        // )
+        );
     },
     blocObserver: MyBlocObserver(),
   );
@@ -54,18 +59,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-
-    //Intl.defaultLocale = delegate.currentLocale.languageCode;
-
-    // delegate.onLocaleChanged = (Locale value) async {
-    //   try {
-    //     setState(() {//
-    //       Intl.defaultLocale = value.languageCode;
-    //     });
-    //   } catch (e) {
-    //     showToast(e.toString());
-    //   }
-    // };
   }
 
   @override
@@ -83,15 +76,11 @@ class _MyAppState extends State<MyApp> {
             builder: (context, orientation, deviceType) {
               return LayoutBuilder(builder: (context, constraints) {
                 return MaterialApp(
+                  // localizationsDelegates: context.localizationDelegates,
+                  // supportedLocales: context.supportedLocales,
+                  // locale: context.locale,
                   debugShowCheckedModeBanner: false,
                   title: 'StudentTable',
-                  localizationsDelegates: [
-                    GlobalCupertinoLocalizations.delegate,
-                    DefaultCupertinoLocalizations.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    //delegate,
-                  ],
 
                   // locale: delegate.currentLocale,
                   // supportedLocales: delegate.supportedLocales,
